@@ -1,0 +1,125 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <!-- Meta, title, CSS, favicons, etc. -->
+      <meta charset="utf-8">
+      <meta name="description" content="Page Titile">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+
+      <title>Login | QuickBudget</title>
+
+      <!-- Call App Mode on ios devices -->
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <!-- Remove Tap Highlight on Windows Phone IE -->
+      <meta name="msapplication-tap-highlight" content="no">
+      <!-- base css -->
+      <link phx-track-static id="style" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/bootstrap/css/bootstrap.min.css")}/>
+
+      <!-- Icons css-->
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/icons.css")}/>
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/font-awesome/font-awesome.min.css")}/>
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/plugin.css")}/>
+
+      <!-- Style css-->
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/style.css")}/>
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/boxed.css")}/>
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/dark-boxed.css")}/>
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/skins.css")}/>
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/dark-style.css")}/>
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/colors/default.css")}/>
+
+      <!-- Color css-->
+      <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/colors/color.css")}/>
+
+
+      <!-- E-commerce -->
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/select2/css/select2.min.css")}/>
+      <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/sidemenu/sidemenu.css")}/>
+
+
+      <style>
+        /* #bk-cover{
+          background: url(images/background/1.png) no-repeat center bottom fixed; background-size: cover;
+        } */
+
+        #bk-cover{
+          background-color: #333399;
+        }
+
+        .login-card{
+          margin-top: -0.2%;
+          margin-bottom: -0.2%;
+          padding: 20px;
+          background-color: #ff6600 !important;
+          border-radius: 10px 0px 0px 10px;
+        }
+
+        .process-btn{
+          background-color: #ff6600;
+          color: #000000;
+        }
+
+        .logo-position{
+          margin-left: 25%;
+          margin-bottom:3%;
+        }
+
+        .form-card{
+          background-color: #ffffff;
+          /* padding: 20px; */
+          margin-left: 15em;
+        }
+
+        .fgt-pwd{
+          font-size: 12px;
+          color: #1a2f9e !important;
+        }
+
+        .disclaimer{
+          /* font-size: 12px; */
+          color: #1b358e;
+          margin-top:5%;
+        }
+      </style>
+    </head>
+
+    <body class="main-body leftmenu">
+
+      <!-- Loader -->
+      <div id="global-loader">
+        <img src={Routes.static_path(@conn, "/images/loader/loader.svg")} class="loader-img">
+      </div>
+
+      <div class="page-wrapper">
+        <div class="page-inner">
+          <%= @inner_content %>
+        </div>
+      </div>
+
+      <!-- Jquery js-->
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/jquery/jquery.min.js")}></script>
+
+  		<!-- Bootstrap js-->
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/bootstrap/js/popper.min.js")}></script>
+  		<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/bootstrap/js/bootstrap.min.js")}></script>
+
+  		<!-- Select2 js-->
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/select2/js/select2.min.js")}></script>
+  		<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/select2.js")}></script>
+
+  		<!-- Custom js -->
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/custom.js")}></script>
+
+      <!-- E-commerce -->
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/check-all-mail.js")}></script>
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/sidebar/sidebar.js")}></script>
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/sticky.js")}></script>
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}></script>
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/checkout-jquery-steps/jquery.steps.min.js")}></script>
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/checkout-jquery-steps.js")}></script>
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/jquery.min.js")}></script>
+      <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/a_registration_form_wizard.js")}></script>
+    </body>
+  </html>

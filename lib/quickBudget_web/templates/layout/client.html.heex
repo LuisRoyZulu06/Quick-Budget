@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta name="description" content="Page Titile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+
+    <title>Quick Budget</title>
+
+	   <link rel="shortcut icon" href={Routes.static_path(@conn, "/images/logos/1.png")} />
+
+    <!-- Call App Mode on ios devices -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Remove Tap Highlight on Windows Phone IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- base css -->
+    <link phx-track-static id="style" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/bootstrap/css/bootstrap.min.css")}/>
+
+    <!-- Icons css-->
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/icons.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/font-awesome/font-awesome.min.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/plugin.css")}/>
+
+
+	<!-- Internal DataTables css-->
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/buttons.bootstrap5.min.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/buttons.dataTables.min.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/dataTables.bootstrap.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/dataTables.bootstrap.min.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/dataTables.bootstrap5.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/dataTables.bootstrap5.min.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/jquery.dataTables.min.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/responsive.bootstrap5.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/rowGroup.bootstrap5.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/datatables.min.css")}/>
+	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/responsive.dataTables.min.css")}/>
+
+    <!-- Style css-->
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/style.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/boxed.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/dark-boxed.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/skins.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/dark-style.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/colors/default.css")}/>
+
+	<!-- sweetalert2 -->
+	<link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/sweetalert2/sweetalert2.bundle.css")}/>
+
+    <!-- Color css-->
+    <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/colors/color.css")}/>
+
+    <!---Select2 css-->
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/select2/css/select2.min.css")}/>
+
+    <!-- Mutipleselect css-->
+    <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/multipleselect/multiple-select.css")}/>
+
+		<!-- Sidemenu css-->
+    <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/sidemenu/sidemenu.css")}/>
+
+		<!-- Internal Gallery css-->
+    <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/gallery/gallery.css")}/>
+
+
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/notifications/sweetalert2/sweetalert2.bundle.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/notifications/toastr/toastr.css")}/>
+
+    <style>
+      .desktop-header{
+        background-color: #009c4c;
+      }
+
+      .procss-btn{
+        background-color: #009c4c !important;
+        color: #ffffff;
+      }
+
+      .alt-btn{
+        background-color: #ff6600 !important;
+        color: #ffffff;
+      }
+
+      .cncl-btn{
+        background-color: #d82b2a !important;
+        color: #ffffff;
+      }
+
+      .profile-cover__action{
+        background: url(images/background/2.png) no-repeat center bottom fixed; background-size: cover;
+      }
+
+      .card-styling{
+        background-color: #1b358e;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+
+  <body class="horizontalmenu">
+    <!-- Loader -->
+    <div id="global-loader">
+      <img src={Routes.static_path(@conn, "/images/loader/loader.svg")} class="loader-img">
+    </div>
+
+    <div class="page">
+      <!-- Desktop Main Header-->
+			<div class="main-header side-header header top-header desktop-header">
+				<div class="container">
+					<div class="main-header-left">
+						<a class="main-header-menu-icon d-lg-none text-white" href="" id="mainNavShow"><span></span></a>
+						<a class="main-logo" href="#">
+              <img src={Routes.static_path(@conn, "/images/logos/2.png")}  alt="logo" width="200">
+              <!-- <img src={Routes.static_path(@conn, "/images/logos/2.png")}  class="header-brand-img desktop-logo" alt="logo">
+							<img src={Routes.static_path(@conn, "/images/logos/2.png")}  class="header-brand-img desktop-logo theme-logo" alt="logo"> -->
+						</a>
+					</div>
+
+					<div class="main-header-center">
+						<div class="responsive-logo">
+              <a href="#">
+                <img src={Routes.static_path(@conn, "/images/logos/5.png")}  class="mobile-logo" alt="logo">
+              </a>
+
+              <a href="#">
+                <img src={Routes.static_path(@conn, "/images/logos/5.png")}  class="mobile-logo-dark"  alt="logo">
+              </a>
+						</div>
+					</div>
+
+					<div class="main-header-right">
+            <!-- Screen Size -->
+						<div class="dropdown d-md-flex">
+							<a class="nav-link icon full-screen-link" href="">
+								<i class="fe fe-maximize fullscreen-button fullscreen header-icons text-white"></i>
+								<i class="fe fe-minimize fullscreen-button exit-fullscreen header-icons text-white"></i>
+							</a>
+						</div>
+
+            <!-- Notifications -->
+						<div class="dropdown main-header-notification">
+							<a class="nav-link icon" href="">
+								<i class="fe fe-bell header-icons text-white"></i>
+								<!-- <span class="badge bg-danger nav-link-badge">4</span> -->
+							</a>
+							<div class="dropdown-menu">
+								<div class="header-navheading">
+									<p class="main-notification-text">You have 1 unread notification<span class="badge bg-pill bg-primary ms-3">View all</span></p>
+								</div>
+								<div class="main-notification-list">
+									<div class="media new">
+										<div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/5.jpg"></div>
+										<div class="media-body">
+											<p>Congratulate <strong>Olivia James</strong> for New template start</p><span>Oct 15 12:32pm</span>
+										</div>
+									</div>
+									<div class="media">
+										<div class="main-img-user"><img alt="avatar" src="../../assets/img/users/2.jpg"></div>
+										<div class="media-body">
+											<p><strong>Joshua Gray</strong> New Message Received</p><span>Oct 13 02:56am</span>
+										</div>
+									</div>
+									<div class="media">
+										<div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/3.jpg"></div>
+										<div class="media-body">
+											<p><strong>Elizabeth Lewis</strong> added new schedule realease</p><span>Oct 12 10:40pm</span>
+										</div>
+									</div>
+								</div>
+								<div class="dropdown-footer">
+									<a href="#">View All Notifications</a>
+								</div>
+							</div>
+						</div>
+
+            <!-- User -->
+						<div class="dropdown main-profile-menu">
+							<a class="d-flex" href="">
+								<span class="main-img-user avatar-xs" >
+                  <img src={Routes.static_path(@conn, "/images/avatar/1.png")}  class="mobile-logo-dark"  alt="user avatar">
+                </span>
+							</a>
+							<div class="dropdown-menu">
+								<div class="header-navheading">
+									<h6 class="main-notification-title">
+                    John Doe
+                  </h6>
+									<p class="main-notification-text">johndoe@gmail.com</p>
+								</div>
+								<a class="dropdown-item border-top" href={}>
+									<i class="fe fe-user"></i> 360<sup>o</sup> View
+								</a>
+								<a class="dropdown-item" href={}>
+									<i class="fe fe-settings"></i> Account Settings
+								</a>
+								<a class="dropdown-item" href={}>
+									<i class="fe fe-power"></i> Sign Out
+								</a>
+							</div>
+						</div>
+						<button class="navbar-toggler navresponsive-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
+							aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+							<i class="fe fe-more-vertical header-icons navbar-toggler-icon text-white"></i>
+						</button><!-- Navresponsive closed -->
+					</div>
+				</div>
+			</div>
+
+			<!-- Mobile-header -->
+			<div class="mobile-main-header">
+				<div class="mb-1 navbar navbar-expand-lg  nav nav-item  navbar-nav-right responsive-navbar navbar-dark ">
+					<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+						<div class="d-flex order-lg-2 ms-auto">
+            <!-- Notifications -->
+						<div class="dropdown main-header-notification">
+							<a class="nav-link icon" href="">
+								<i class="fe fe-bell header-icons"></i>
+								<!-- <span class="badge bg-danger nav-link-badge">4</span> -->
+							</a>
+							<div class="dropdown-menu">
+								<div class="header-navheading">
+									<p class="main-notification-text">You have 1 unread notification<span class="badge bg-pill bg-primary ms-3">View all</span></p>
+								</div>
+								<div class="main-notification-list">
+									<div class="media new">
+										<div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/5.jpg"></div>
+										<div class="media-body">
+											<p>Congratulate <strong>Olivia James</strong> for New template start</p><span>Oct 15 12:32pm</span>
+										</div>
+									</div>
+
+									<div class="media">
+										<div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/3.jpg"></div>
+										<div class="media-body">
+											<p><strong>Elizabeth Lewis</strong> added new schedule realease</p><span>Oct 12 10:40pm</span>
+										</div>
+									</div>
+								</div>
+								<div class="dropdown-footer">
+									<a href="#">View All Notifications</a>
+								</div>
+							</div>
+						</div>
+
+			      <!-- User -->
+						<div class="dropdown main-profile-menu">
+							<a class="d-flex" href="#">
+								<span class="main-img-user avatar-xs">
+                  <img src={Routes.static_path(@conn, "/images/avatar/2.png")} alt="user avatar">
+                </span>
+							</a>
+							<div class="dropdown-menu">
+								<div class="header-navheading">
+									<h6 class="main-notification-title">
+                    John Doe
+                  </h6>
+								</div>
+								<a class="dropdown-item border-top" href="profile.html">
+									<i class="fe fe-user"></i> My Profile
+								</a>
+								<a class="dropdown-item" href="profile.html">
+									<i class="fe fe-settings"></i> Account Settings
+								</a>
+								<a class="dropdown-item" href={}>
+									<i class="fe fe-power"></i> Sign Out
+								</a>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Horizonatal menu-->
+			<div class="main-navbar hor-menu sticky" style="background-color: white;">
+				<div class="container">
+					<ul class="nav" style="margin-left: 25%;">
+            <!-- Home -->
+						<li class="nav-item">
+							<a class="nav-link text-black" href={}><i class="si si-home"></i>Home</a>
+						</li>
+
+            <!-- FT Modal -->
+            <li class="nav-item">
+              <a class="nav-link text-black" data-bs-target="#funds_trns" data-bs-toggle="modal">
+                <i class="si si-paper-plane"></i>Funds Transfers
+              </a>
+            </li>
+
+            <!-- Payments Modal -->
+            <li class="nav-item">
+              <a class="nav-link text-black" data-bs-target="#payments" data-bs-toggle="modal">
+                <i class="si si-wallet"></i>Payments
+              </a>
+            </li>
+
+      			<!-- Self Service -->
+      			<li class="nav-item">
+      				<a class="nav-link with-sub text-black" href="#" data-bs-target="#self_services" data-bs-toggle="modal">
+      					<i class="si si-settings"></i>
+      					Self Service
+      				</a>
+      			</li>
+
+      			<!-- Beneficiaries -->
+      			<li class="nav-item">
+      				<a class="nav-link text-black" href={}>
+      					<i class="si si-people"></i>Beneficiaries
+      				</a>
+      			</li>
+					</ul>
+				</div>
+			</div>
+
+      <!-- Main content -->
+      <div class="main-content pt-0">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-12 col-lg-offset-2">
+    					<div class="form-group">
+    						<%= if get_flash(@conn, :info) do %>
+    						<div class="alert alert-info alert-styled-left">
+    						<button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+    						<%= get_flash(@conn, :info) %>
+    						</div>
+    						<% end %>
+    						<%= if get_flash(@conn, :error) do %>
+    						<div class="alert alert-danger alert-styled-left">
+    						<button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+    						Opps! <%= get_flash(@conn, :error) %>
+    						</div>
+    						<% end %>
+    					</div>
+    				</div>
+    			</div>
+          <%= @inner_content %>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="main-footer text-center">
+        <div class="container">
+          <div class="row row-sm">
+            <div class="col-md-12">
+              <span>
+                <%= Timex.today.year %> © Copyright National Savings Bank Zambia: All rights reserved.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/jquery.js")}></script>
+
+	<!--- sweetalert2 --->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="sweetalert2.all.min.js"></script>
+	<script src="sweetalert2.min.js"></script>
+	<link rel="stylesheet" href="sweetalert2.min.css">
+
+
+	<!--- sweetalert2 --->
+	<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/sweetalert2/sweetalert2.bundle.js")}></script>
+    <!-- Jquery js-->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/jquery/jquery.min.js")}></script>
+
+		<!-- Bootstrap js-->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/bootstrap/js/popper.min.js")}></script>
+		<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/bootstrap/js/bootstrap.min.js")}></script>
+
+		<!-- Select2 js-->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/select2/js/select2.min.js")}></script>
+		<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/select2.js")}></script>
+
+		<!-- Custom js -->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/custom.js")}></script>
+
+    <!-- Perfect-scrollbar js -->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}></script>
+
+    <!-- Internal Gallery js-->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/picturefill.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lightgallery.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lightgallery-1.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lightgallery-1.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-pager.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-autoplay.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-fullscreen.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-zoom.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-hash.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-share.js")}></script>
+
+
+    <!-- Sidebar js -->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/sidebar/sidebar.js")}></script>
+
+    <!-- Select2 js-->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/select2/js/select2.min.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/select2.js")}></script>
+
+    <!-- Sticky js -->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/sticky.js")}></script>
+
+
+	<!-- Sweet alert -->
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/notifications/sweetalert2/sweetalert2.bundle.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/notifications/toastr/toastr.js")}></script>
+
+	<!-------- DATA TABLES ---------->
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/buttons.bootstrap5.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/buttons.colVis.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/buttons.html5.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/buttons.print.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.bootstrap.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.bootstrap.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.bootstrap5.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.bootstrap5.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.buttons.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.rowGroup.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/jquery.dataTables.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/jszip.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/pdfmake/pdfmake.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/pdfmake/vfs_fonts.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/datatables.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/dataTables.responsive.min.js")}></script>
+	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/responsive.bootstrap5.min.js")}></script>
+  </body>
+</html>

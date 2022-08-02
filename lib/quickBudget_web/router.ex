@@ -5,23 +5,101 @@ defmodule QuickBudgetWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {QuickBudgetWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug(QuickBudgetWeb.Plugs.SetUser)
+  end
+
+  pipeline :client do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_layout, {QuickBudgetWeb.LayoutView, :client}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug(QuickBudgetWeb.Plugs.SetUser)
+    plug(QuickBudgetWeb.Plugs.RequiredInformation)
+  end
+
+  pipeline :admin do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_layout, {QuickBudgetWeb.LayoutView, :admin}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug(QuickBudgetWeb.Plugs.SetUser)
+  end
+
+  pipeline :session do
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:put_secure_browser_headers)
+    plug(:put_layout, {QuickBudgetWeb.LayoutView, :login})
+  end
+
+  pipeline :no_layout do
+    plug :put_layout, false
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  # ------------- NO LAYOUT SCOPE
   scope "/", QuickBudgetWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
+    pipe_through([:browser, :no_layout])
+    get("/logout/current/user", SessionController, :signout)
+    # get("/new/password", UserController, :new_password)
   end
 
+  # ------------- SESSION SCOPE
+  scope "/", QuickBudgetWeb do
+    pipe_through :session
+    get("/", SessionController, :new)
+    post("/login", SessionController, :login)
+    # get("/registration", SessionController, :registration)
+    # post("/sef/registration", UserController, :self_registration)
+    # get("/admin/login", SessionController, :admin_login)
+    # get("/backoffice", SessionController, :backoffice)
+    # get("/account/disabled", SessionController, :error_405)
+    # get("/forgort/password", UserController, :forgot_password)
+    # post("/confirmation/token", UserController, :token)
+    # get("/reset/password", UserController, :default_password)
+  end
+
+  # --------------- CLIENT
+  scope "/", QuickBudgetWeb do
+    pipe_through :client
+
+    get("/dashboard", ClientController, :dashboard)
+  end
+
+  # --------------- BACKOFFICE
+  # scope "/", QuickBudgetWeb.Admin do
+  #   pipe_through :admin
+  #
+  #   get("/dashboard", AdminController, :dashboard)
+  #   get("/my/profile", AdminController, :admin_profile)
+  #   get("/backoffice/users", AdminController, :admin_users)
+  #   post("/create/new/admin", AdminController, :create_admin)
+  #   post("/pull/admin/users", AdminController, :get_admin_users)
+  #   get("/front/users", AdminController, :client_users)
+  #
+  #   # ---------- User Roles
+  #   get("/user/roles", AdminController, :usr_roles)
+  #
+  #   # ---------- configurations
+  #   get("/MNOs", ConfigController, :mnos)
+  #   post("/add/new/mno", ConfigController, :create_mno)
+  #   post("/update/mno/details", ConfigController, :update_mno)
+  #   get("/utility/configurations", ConfigController, :utility_configs)
+  #   post("/add/new/service/provider", ConfigController, :create_service_provider)
+  # end
+
   # Other scopes may use custom stacks.
-  # scope "/api", QuickBudgetWeb do
+  # scope "/api", InternetBankingWeb do
   #   pipe_through :api
   # end
 
@@ -37,8 +115,7 @@ defmodule QuickBudgetWeb.Router do
 
     scope "/" do
       pipe_through :browser
-
-      live_dashboard "/dashboard", metrics: QuickBudgetWeb.Telemetry
+      live_dashboard "/dashboard", metrics: InternetBankingWeb.Telemetry
     end
   end
 
