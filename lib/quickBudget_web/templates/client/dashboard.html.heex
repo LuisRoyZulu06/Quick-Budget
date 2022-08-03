@@ -1,0 +1,173 @@
+<div class="main-content pt-0">
+  <div class="container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <h3 style="font-weight: bold; color: #ff6600;">
+          Quick Budget
+        </h3>
+      </div>
+    </div>
+    <!-- End Page Header -->
+
+    <!--Row-->
+    <div class="row row-sm" style="margin-bottom: 5%;">
+      <div class="col-sm-12 col-lg-12 col-xl-8">
+        <!--Card-->
+        <div class="row row-sm  mt-lg-4">
+          <div class="col-sm-12 col-lg-12 col-xl-12">
+            <div class="card bg-info custom-card card-box" style="background-color: #ff6600 !important; ">
+              <div class="card-body p-4">
+                <div class="row align-items-center">
+                  <div class="offset-lg-4 offset-sm-6 col-lg-8 col-sm-6 col-12 img-bg ">
+                    <h4 class="d-flex  mb-3" style="margin-left: 30%;">
+                      <span class="font-weight-bold text-white">
+                        Hello <%= "#{(@conn.assigns.user.username)}"%>, lets budget!
+                      </span>
+                    </h4>
+                    <p class="tx-white-7 mb-5" style="margin-left: 30%;">
+                      <!---- -------------------- MESSAGE HERE ------------------------------>
+                      Need help to manage your financies?<br>
+                      Welcome to Quick Budget | Save for your growth
+                    </p>
+                  </div>
+                  <img src={Routes.static_path(@conn, "/images/dashboard/1.png")} alt="user">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Credit Cards-->
+        <div class="row row-sm">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+            <div class="card custom-card">
+              <div class="card-body">
+                <div class="card-item">
+                  <div class="card-item-icon card-icon">
+                    <img src={Routes.static_path(@conn, "/images/logos/3.png")} alt="bank logo">
+                  </div>
+                  <div class="card-item-title  mb-2">
+                    <label class="main-content-label tx-13 font-weight-bold mb-1">Available Balance</label>
+                    <span class="d-block tx-12 mb-0 text-muted">Your Account balance is:</span>
+                  </div>
+                  <div class="card-item-body">
+                    <div class="card-item-stat">
+                      <h4 class="font-weight-bold">ZMW18,500</h4>
+                      <small>Click to deposit </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+            <div class="card custom-card">
+              <div class="card-body">
+                <div class="card-item">
+                  <div class="card-item-icon card-icon">
+                    <img src={Routes.static_path(@conn, "/images/logos/3.png")} alt="bank logo">
+                  </div>
+                  <div class="card-item-title  mb-2">
+                    <label class="main-content-label tx-13 font-weight-bold mb-1">Dollar Account</label>
+                    <span class="d-block tx-12 mb-0 text-muted">.
+                      <!-- 900907823543 -->
+                    </span>
+                  </div>
+                  <div class="card-item-body">
+                    <div class="card-item-stat">
+                      <h4 class="font-weight-bold">$8,500</h4>
+                      <small>.
+                        <!-- Available Balance -->
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-12 col-xl-4 mt-xl-4">
+        <div class="card custom-card card-dashboard-calendar pb-0">
+          <label class="main-content-label mb-2 pt-1">To-Do List Summary</label>
+          <table class="table table-hover m-b-0 transcations mt-2">
+            <tbody>
+              <tr>
+                <td>
+                  <div class="d-flex align-middle ms-3">
+                    <div class="d-inline-block">
+                      <h6 class="mb-1">TV</h6>
+                      <p class="mb-0 tx-13 text-muted">DStv</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">
+                  <div class="d-inline-block">
+                    <h6 class="mb-2 tx-15 font-weight-semibold">K 800.00<i class="fas fa-level-up-alt ms-2 text-success m-l-10"></i></h6>
+                    <p class="mb-0 tx-11 text-muted">12 Jan 2020</p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="d-flex align-middle ms-3">
+                    <div class="d-inline-block">
+                      <h6 class="mb-1">Electricity</h6>
+                      <p class="mb-0 tx-13 text-muted">Zesco</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">
+                  <div class="d-inline-block">
+                    <h6 class="mb-2 tx-15 font-weight-semibold">K 400.45<i class="fas fa-level-up-alt ms-2 text-success m-l-10"></i></h6>
+                    <p class="mb-0 tx-11 text-muted">23 Jan 2020</p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="d-flex align-middle ms-3">
+                    <div class="d-inline-block">
+                      <h6 class="mb-1">ZRA</h6>
+                      <p class="mb-0 tx-13 text-muted">Domt</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">
+                  <div class="d-inline-block">
+                    <h6 class="mb-2 tx-15 font-weight-semibold">K 1 500.00<i class="fas fa-level-up-alt ms-2 text-success m-l-10"></i></h6>
+                    <p class="mb-0 tx-11 text-muted">23 Jan 2020</p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="pb-0">
+                  <div class="d-flex align-middle ms-3">
+                    <div class="d-inline-block">
+                      <h6 class="mb-1">Nhima</h6>
+                      <p class="mb-0 tx-13 text-muted">Nhima</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end pb-0">
+                  <div class="d-inline-block">
+                    <h6 class="mb-2 tx-15 font-weight-semibold">K 350.00<i class="fas fa-level-down-alt ms-2 text-danger m-l-10"></i></h6>
+                    <p class="mb-0 tx-11 text-muted">4 Apr 2020</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div><!-- col end -->
+    </div><!-- Row end -->
+
+  </div>
+</div>
