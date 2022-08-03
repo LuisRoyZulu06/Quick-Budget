@@ -18,7 +18,6 @@ defmodule QuickBudgetWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug(QuickBudgetWeb.Plugs.SetUser)
-    plug(QuickBudgetWeb.Plugs.RequiredInformation)
   end
 
   pipeline :admin do

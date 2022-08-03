@@ -70,11 +70,12 @@
 
     <style>
       .desktop-header{
-        background-color: #009c4c;
+        background-color: #333399;
+        /* #ff6600; */
       }
 
       .procss-btn{
-        background-color: #009c4c !important;
+        background-color: #ff6600 !important;
         color: #ffffff;
       }
 
@@ -110,11 +111,9 @@
 			<div class="main-header side-header header top-header desktop-header">
 				<div class="container">
 					<div class="main-header-left">
-						<a class="main-header-menu-icon d-lg-none text-white" href="" id="mainNavShow"><span></span></a>
-						<a class="main-logo" href="#">
-              <img src={Routes.static_path(@conn, "/images/logos/2.png")}  alt="logo" width="200">
-              <!-- <img src={Routes.static_path(@conn, "/images/logos/2.png")}  class="header-brand-img desktop-logo" alt="logo">
-							<img src={Routes.static_path(@conn, "/images/logos/2.png")}  class="header-brand-img desktop-logo theme-logo" alt="logo"> -->
+						<a class="main-logo text-white" href={Routes.client_path(@conn, :dashboard)}>
+              Quick Budget
+              <!-- <img src={Routes.static_path(@conn, "/images/logos/2.png")}  alt="logo" width="200"> -->
 						</a>
 					</div>
 
@@ -145,6 +144,7 @@
 								<i class="fe fe-bell header-icons text-white"></i>
 								<!-- <span class="badge bg-danger nav-link-badge">4</span> -->
 							</a>
+
 							<div class="dropdown-menu">
 								<div class="header-navheading">
 									<p class="main-notification-text">You have 1 unread notification<span class="badge bg-pill bg-primary ms-3">View all</span></p>
@@ -177,33 +177,36 @@
 
             <!-- User -->
 						<div class="dropdown main-profile-menu">
-							<a class="d-flex" href="">
+							<a class="d-flex" href="#">
 								<span class="main-img-user avatar-xs" >
                   <img src={Routes.static_path(@conn, "/images/avatar/1.png")}  class="mobile-logo-dark"  alt="user avatar">
                 </span>
 							</a>
+
 							<div class="dropdown-menu">
 								<div class="header-navheading">
 									<h6 class="main-notification-title">
-                    John Doe
+                    <%= "#{(@conn.assigns.user.first_name)}"%> <%= "#{(@conn.assigns.user.last_name)}"%>
                   </h6>
-									<p class="main-notification-text">johndoe@gmail.com</p>
+									<p class="main-notification-text">
+                    <%= "#{(@conn.assigns.user.email)}"%>
+                  </p>
 								</div>
+
 								<a class="dropdown-item border-top" href={}>
 									<i class="fe fe-user"></i> 360<sup>o</sup> View
 								</a>
-								<a class="dropdown-item" href={}>
-									<i class="fe fe-settings"></i> Account Settings
-								</a>
-								<a class="dropdown-item" href={}>
+
+								<a class="dropdown-item" href={Routes.session_path(@conn, :signout)}>
 									<i class="fe fe-power"></i> Sign Out
 								</a>
 							</div>
 						</div>
+
 						<button class="navbar-toggler navresponsive-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
 							aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
 							<i class="fe fe-more-vertical header-icons navbar-toggler-icon text-white"></i>
-						</button><!-- Navresponsive closed -->
+						</button>
 					</div>
 				</div>
 			</div>
@@ -219,13 +222,19 @@
 								<i class="fe fe-bell header-icons"></i>
 								<!-- <span class="badge bg-danger nav-link-badge">4</span> -->
 							</a>
+
 							<div class="dropdown-menu">
 								<div class="header-navheading">
-									<p class="main-notification-text">You have 1 unread notification<span class="badge bg-pill bg-primary ms-3">View all</span></p>
+									<p class="main-notification-text">
+                    You have 1 unread notification
+                    <span class="badge bg-pill bg-primary ms-3">
+                      View all
+                    </span>
+                  </p>
 								</div>
+
 								<div class="main-notification-list">
 									<div class="media new">
-										<div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/5.jpg"></div>
 										<div class="media-body">
 											<p>Congratulate <strong>Olivia James</strong> for New template start</p><span>Oct 15 12:32pm</span>
 										</div>
@@ -279,20 +288,16 @@
 					<ul class="nav" style="margin-left: 25%;">
             <!-- Home -->
 						<li class="nav-item">
-							<a class="nav-link text-black" href={}><i class="si si-home"></i>Home</a>
+							<a class="nav-link text-black" href={Routes.client_path(@conn, :dashboard)}>
+                <i class="si si-home"></i>
+                Home
+              </a>
 						</li>
 
-            <!-- FT Modal -->
-            <li class="nav-item">
-              <a class="nav-link text-black" data-bs-target="#funds_trns" data-bs-toggle="modal">
-                <i class="si si-paper-plane"></i>Funds Transfers
-              </a>
-            </li>
-
-            <!-- Payments Modal -->
+            <!-- Account Modal -->
             <li class="nav-item">
               <a class="nav-link text-black" data-bs-target="#payments" data-bs-toggle="modal">
-                <i class="si si-wallet"></i>Payments
+                <i class="si si-wallet"></i>Account
               </a>
             </li>
 
@@ -345,7 +350,7 @@
           <div class="row row-sm">
             <div class="col-md-12">
               <span>
-                <%= Timex.today.year %> © Copyright National Savings Bank Zambia: All rights reserved.
+                <%= Timex.today.year %> © Copyright Quick Budget: All rights reserved.
               </span>
             </div>
           </div>

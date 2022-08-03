@@ -35,7 +35,7 @@ defmodule QuickBudget.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user_accounts!(id), do: Repo.get!(UserAccounts, id)
+  def get_user_account!(id), do: Repo.get!(UserAccounts, id)
 
   @doc """
   Creates a user_accounts.
