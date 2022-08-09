@@ -2,3 +2,8 @@
 mix phx.gen.context Accounts UserAccounts tbl_users first_name last_name username email phone password auto_password user_status
 mix phx.gen.context Logs UserLogs tbl_user_logs activity user_id
 mix phx.gen.context Notifications Email tbl_email_logs subject sender_email sender_name mail_body recipient_email status attempts
+
+============== TRANSFERS MODULE =================
+mix phx.gen.context Transfers BankAccount tbl_txns acc_name acc_no amount narration txn_reference txn_type
+mix phx.gen.context Transfers BankCredit tbl_bank_credit acc_no acc_id amount
+mix phx.gen.context Transfers Transactions tbl_txns acc_name acc_no user_id

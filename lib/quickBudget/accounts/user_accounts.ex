@@ -38,4 +38,4 @@ defmodule QuickBudget.Accounts.UserAccounts do
 end
 
 # QuickBudget.Accounts.create_user_accounts(%{first_name: "Luis Roy", last_name: "Zulu", username: "Luis", email: "luis@probasegroup.com", password: "password06", auto_pwd: "N", user_type: "BACKOFFICE", user_status: "ACTIVE", phone: "+260977551290",inserted_at: NaiveDateTime.utc_now(),updated_at: NaiveDateTime.utc_now()})
-# QuickBudget.Accounts.create_user_accounts(%{first_name: "John", last_name: "Doe", username: "JDoe", email: "john@probasegroup.com", password: "password06", auto_password: "N", user_type: "CLIENT", user_status: "ACTIVE", phone: "+260977551290",inserted_at: NaiveDateTime.utc_now(),updated_at: NaiveDateTime.utc_now()})
+# QuickBudget.Accounts.create_user_accounts(%{first_name: "Roy", last_name: "Rexota", username: "Rexota", email: "Rexota@probasegroup.com", password: "password06", auto_password: "N", user_type: "CLIENT", user_status: "ACTIVE", phone: "+260977551290",inserted_at: NaiveDateTime.utc_now(),updated_at: NaiveDateTime.utc_now()})

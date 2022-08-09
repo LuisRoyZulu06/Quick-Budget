@@ -69,10 +69,11 @@ defmodule QuickBudgetWeb.Router do
   end
 
   # --------------- CLIENT
-  scope "/", QuickBudgetWeb do
+  scope "/", QuickBudgetWeb.Client do
     pipe_through :client
 
     get("/dashboard", ClientController, :dashboard)
+    post("/deposit/cash", TransfersController, :depsoit)
   end
 
   # --------------- BACKOFFICE

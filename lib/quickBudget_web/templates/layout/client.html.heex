@@ -322,24 +322,6 @@
       <!-- Main content -->
       <div class="main-content pt-0">
     		<div class="container">
-    			<div class="row">
-    				<div class="col-md-12 col-lg-offset-2">
-    					<div class="form-group">
-    						<%= if get_flash(@conn, :info) do %>
-    						<div class="alert alert-info alert-styled-left">
-    						<button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
-    						<%= get_flash(@conn, :info) %>
-    						</div>
-    						<% end %>
-    						<%= if get_flash(@conn, :error) do %>
-    						<div class="alert alert-danger alert-styled-left">
-    						<button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
-    						Opps! <%= get_flash(@conn, :error) %>
-    						</div>
-    						<% end %>
-    					</div>
-    				</div>
-    			</div>
           <%= @inner_content %>
         </div>
       </div>
