@@ -25,18 +25,10 @@
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/plugin.css")}/>
 
 
-	<!-- Internal DataTables css-->
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/buttons.bootstrap5.min.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/buttons.dataTables.min.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/dataTables.bootstrap.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/dataTables.bootstrap.min.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/dataTables.bootstrap5.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/dataTables.bootstrap5.min.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/jquery.dataTables.min.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/responsive.bootstrap5.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/css/rowGroup.bootstrap5.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/datatables.min.css")}/>
-	<link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/datatable/responsive.dataTables.min.css")}/>
+  	<!-- Internal DataTables css-->
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/dataTables.bootstrap5.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/buttons.bootstrap5.min.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/responsive.bootstrap5.css")}/>
 
     <!-- Style css-->
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/style.css")}/>
@@ -303,9 +295,9 @@
 
       			<!-- Self Service -->
       			<li class="nav-item">
-      				<a class="nav-link with-sub text-black" href="#" data-bs-target="#self_services" data-bs-toggle="modal">
-      					<i class="si si-settings"></i>
-      					Self Service
+      				<a class="nav-link text-black" href="#" data-bs-target="#mybudget" data-bs-toggle="modal">
+      					<i class="si si-calculator"></i>
+      					Your Budget
       				</a>
       			</li>
 
@@ -339,6 +331,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Modals -->
+    <%=  QuickBudgetWeb.Client.TransfersView.render "md_budget.html", assigns %>
 
 
 	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/jquery.js")}></script>
@@ -398,22 +393,18 @@
 	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/notifications/toastr/toastr.js")}></script>
 
 	<!-------- DATA TABLES ---------->
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/buttons.bootstrap5.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/buttons.colVis.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/buttons.html5.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/buttons.print.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.bootstrap.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.bootstrap.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.bootstrap5.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.bootstrap5.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.buttons.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/dataTables.rowGroup.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/jquery.dataTables.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/js/jszip.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/pdfmake/pdfmake.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/pdfmake/vfs_fonts.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/datatables.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/dataTables.responsive.min.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/datatable/responsive.bootstrap5.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/jquery.dataTables.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/dataTables.bootstrap5.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/dataTables.buttons.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.bootstrap5.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/jszip.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/pdfmake/pdfmake.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/datatable/pdfmake/vfs_fonts.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.html5.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.print.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.colVis.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/dataTables.responsive.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/responsive.bootstrap5.min.js")}></script>
+  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/table-data.js")}></script>
   </body>
 </html>
