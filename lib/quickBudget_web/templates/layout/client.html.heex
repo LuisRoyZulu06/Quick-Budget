@@ -3,62 +3,66 @@
   <head>
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <meta name="description" content="Page Titile">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-tap-highlight" content="no">
+		<meta name="description" content="Quick Budget">
+		<meta name="author" content="Luis Roy Zulu">
+
+    <!-- Favicon -->
+		<link rel="icon" href={Routes.static_path(@conn, "/images/logos/1.png")} type="image/x-icon"/>
 
     <title>Quick Budget</title>
 
-	   <link rel="shortcut icon" href={Routes.static_path(@conn, "/images/logos/1.png")} />
-
-    <!-- Call App Mode on ios devices -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <!-- Remove Tap Highlight on Windows Phone IE -->
-    <meta name="msapplication-tap-highlight" content="no">
-    <!-- base css -->
-    <link phx-track-static id="style" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/bootstrap/css/bootstrap.min.css")}/>
+    <!-- Bootstrap css-->
+    <link id="style" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/bootstrap/css/bootstrap.min.css")}/>
 
     <!-- Icons css-->
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/icons.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/font-awesome/font-awesome.min.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/plugin.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/icons.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/font-awesome/font-awesome.min.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/web-fonts/plugin.css")}/>
 
-
-  	<!-- Internal DataTables css-->
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/dataTables.bootstrap5.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/buttons.bootstrap5.min.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/responsive.bootstrap5.css")}/>
+    <!-- Internal DataTables css-->
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/dataTables.bootstrap5.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/buttons.bootstrap5.min.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/datatable/css/responsive.bootstrap5.css")}/>
 
     <!-- Style css-->
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/style.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/boxed.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/dark-boxed.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/skins.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/dark-style.css")}/>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/colors/default.css")}/>
-
-	<!-- sweetalert2 -->
-	<link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/sweetalert2/sweetalert2.bundle.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/style.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/boxed.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/dark-boxed.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/skins.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/dark-style.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/colors/default.css")}/>
 
     <!-- Color css-->
-    <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/colors/color.css")}/>
+    <link id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/colors/color.css")}/>
 
     <!---Select2 css-->
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/select2/css/select2.min.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/select2/css/select2.min.css")}/>
 
+    <!-- Sidemenu css-->
+    <link id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/sidemenu/sidemenu.css")}/>
+
+
+
+
+
+
+    <!-- Call App Mode on ios devices -->
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <!-- Remove Tap Highlight on Windows Phone IE -->
+    <!-- <meta name="msapplication-tap-highlight" content="no"> -->
+    <!-- base css -->
+    <!-- <link phx-track-static id="style" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/bootstrap/css/bootstrap.min.css")}/> -->
+  	<!-- sweetalert2 -->
+  	<!-- <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/sweetalert2/sweetalert2.bundle.css")}/> -->
     <!-- Mutipleselect css-->
-    <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/multipleselect/multiple-select.css")}/>
-
-		<!-- Sidemenu css-->
-    <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/sidemenu/sidemenu.css")}/>
-
+    <!-- <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/multipleselect/multiple-select.css")}/> -->
 		<!-- Internal Gallery css-->
-    <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/gallery/gallery.css")}/>
-
-
+    <!-- <link phx-track-static id="theme" rel="stylesheet" href={Routes.static_path(@conn, "/assets/plugins/gallery/gallery.css")}/>
     <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/notifications/sweetalert2/sweetalert2.bundle.css")}/>
-    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/notifications/toastr/toastr.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/notifications/toastr/toastr.css")}/> -->
 
     <style>
       .desktop-header{
@@ -66,9 +70,17 @@
         /* #ff6600; */
       }
 
-      .procss-btn{
+      /* .login-card{
+        margin-top: -0.2%;
+        margin-bottom: -0.2%;
+        padding: 20px;
         background-color: #ff6600 !important;
-        color: #ffffff;
+        border-radius: 10px 0px 0px 10px;
+      } */
+
+      .process-btn{
+        background-color: #ff6600;
+        color: #000000;
       }
 
       .alt-btn{
@@ -335,37 +347,57 @@
     <!-- Modals -->
     <%=  QuickBudgetWeb.Client.TransfersView.render "md_budget.html", assigns %>
 
-
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/jquery.js")}></script>
-
-	<!--- sweetalert2 --->
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<script src="sweetalert2.all.min.js"></script>
-	<script src="sweetalert2.min.js"></script>
-	<link rel="stylesheet" href="sweetalert2.min.css">
-
-
-	<!--- sweetalert2 --->
-	<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/sweetalert2/sweetalert2.bundle.js")}></script>
     <!-- Jquery js-->
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/jquery/jquery.min.js")}></script>
 
-		<!-- Bootstrap js-->
+    <!-- Bootstrap js-->
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/bootstrap/js/popper.min.js")}></script>
-		<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/bootstrap/js/bootstrap.min.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/bootstrap/js/bootstrap.min.js")}></script>
 
 		<!-- Select2 js-->
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/select2/js/select2.min.js")}></script>
 		<script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/select2.js")}></script>
 
-		<!-- Custom js -->
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/custom.js")}></script>
+    <!-- Internal Datatables -->
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/jquery.dataTables.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/dataTables.bootstrap5.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/dataTables.buttons.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.bootstrap5.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/jszip.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/pdfmake/pdfmake.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/datatable/pdfmake/vfs_fonts.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.html5.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.print.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.colVis.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/dataTables.responsive.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/responsive.bootstrap5.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/table-data.js")}></script>
 
     <!-- Perfect-scrollbar js -->
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}></script>
 
+    <!-- Sidebar js -->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/sidebar/sidebar.js")}></script>
+
+    <!-- Sticky js -->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/sticky.js")}></script>
+
+    <!-- Custom js -->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/custom.js")}></script>
+
+
+
+  	<!--- sweetalert2 --->
+  	<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  	<script src="sweetalert2.all.min.js"></script>
+  	<script src="sweetalert2.min.js"></script>
+  	<link rel="stylesheet" href="sweetalert2.min.css"> -->
+    <!-- <script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/jquery.js")}></script> -->
+  	<!--- sweetalert2 --->
+  	<!-- <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/sweetalert2/sweetalert2.bundle.js")}></script> -->
+
     <!-- Internal Gallery js-->
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/picturefill.js")}></script>
+    <!-- <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/picturefill.js")}></script>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lightgallery.js")}></script>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lightgallery-1.js")}></script>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lightgallery-1.js")}></script>
@@ -374,37 +406,14 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-fullscreen.js")}></script>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-zoom.js")}></script>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-hash.js")}></script>
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-share.js")}></script>
-
-
-    <!-- Sidebar js -->
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/sidebar/sidebar.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/gallery/lg-share.js")}></script> -->
 
     <!-- Select2 js-->
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/select2/js/select2.min.js")}></script>
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/select2.js")}></script>
+    <!-- <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/select2/js/select2.min.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/select2.js")}></script> -->
 
-    <!-- Sticky js -->
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/sticky.js")}></script>
-
-
-	<!-- Sweet alert -->
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/notifications/sweetalert2/sweetalert2.bundle.js")}></script>
-	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/notifications/toastr/toastr.js")}></script>
-
-	<!-------- DATA TABLES ---------->
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/jquery.dataTables.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/dataTables.bootstrap5.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/dataTables.buttons.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.bootstrap5.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/jszip.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/pdfmake/pdfmake.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/datatable/pdfmake/vfs_fonts.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.html5.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.print.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/js/buttons.colVis.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/dataTables.responsive.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/plugins/datatable/responsive.bootstrap5.min.js")}></script>
-  <script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/table-data.js")}></script>
+  	<!-- Sweet alert -->
+  	<!-- <script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/notifications/sweetalert2/sweetalert2.bundle.js")}></script>
+  	<script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/notifications/toastr/toastr.js")}></script> -->
   </body>
 </html>
