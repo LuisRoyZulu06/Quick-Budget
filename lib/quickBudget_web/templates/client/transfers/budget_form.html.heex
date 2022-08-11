@@ -1,0 +1,216 @@
+<style>
+  #education, #entertainment, #health, #household, #transport, #other{
+    display: none;
+  }
+</style>
+
+<form action="#" method="POST">
+  <div class="d-flex flex-column">
+    <div class="form-group">
+      <p class="mg-b-10">Budget Category</p>
+      <select class="form-control select2" onchange="showDiv(this)">
+        <option label="Select Item to Budget for">
+          Select Item to Budget for
+        </option>
+
+        <option value="Education">
+          Education
+        </option>
+
+        <option value="Entertainment">
+          Entertainment
+        </option>
+
+        <option value="Health">
+          Health
+        </option>
+
+        <option value="Household">
+          House Hold Expenses
+        </option>
+
+        <option value="Transport">
+          Transportaion
+        </option>
+
+        <option value="Other">
+          Other
+        </option>
+      </select>
+    </div>
+
+    <!-- Education Div -->
+    <div id="education">
+      <div class="form-group">
+        <p class="mg-b-10">Tuition Fees: Period (From - To)</p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group">
+              <div class="input-group-text">
+                  From:
+              </div>
+              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="input-group">
+              <div class="input-group-text">
+                  To:
+              </div>
+              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p class="mg-b-10">Amount to be paid</p>
+          <input class="form-control" placeholder="K000.00" type="number">
+          <input class="form-control" value="Tuition Fees" type="hidden" name="activity">
+        </div>
+
+        <div class="form-group">
+          <p class="mg-b-10">Note</p>
+          <textarea class="form-control" placeholder="Typing..." row="5"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entertainment Div -->
+    <div id="entertainment">
+      <div class="form-group">
+        <p class="mg-b-10">Activity Name</p>
+        <input class="form-control" placeholder="Enter activity name" type="text" name="activity">
+      </div>
+
+      <div class="form-group">
+        <p class="mg-b-10">Date start & Date end</p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group">
+              <div class="input-group-text">
+                  From:
+              </div>
+              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="input-group">
+              <div class="input-group-text">
+                  To:
+              </div>
+              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <p class="mg-b-10">Amount to reserve</p>
+        <input class="form-control" placeholder="K000.00" type="number" name="amount">
+      </div>
+
+      <div class="form-group">
+        <p class="mg-b-10">Note</p>
+        <textarea class="form-control" placeholder="Typing..." row="5"></textarea>
+      </div>
+    </div>
+
+    <!-- Health Div -->
+    <div id="health">
+      <div class="form-group">
+        <input class="form-control" placeholder="Health Div" type="text">
+      </div>
+    </div>
+
+    <!-- Household Div -->
+    <div id="household">
+      <div class="form-group">
+        <input class="form-control" placeholder="House Hold Expenses Div" type="text">
+      </div>
+    </div>
+
+    <!-- Transport Div -->
+    <div id="transport">
+      <div class="form-group">
+        <input class="form-control" placeholder="Transport Div" type="text">
+      </div>
+    </div>
+
+    <!-- Transport Div -->
+    <div id="other">
+      <div class="form-group">
+        <input class="form-control" placeholder="Other Div" type="text">
+      </div>
+    </div>
+
+    <div class="form-group pull-left">
+      <button class="btn ripple btn-main-primary process-btn">
+        <i class="si si-plus"></i>
+        Submit Item
+      </button>
+    </div>
+  </div>
+</form>
+
+<script>
+  function showDiv(select){
+   if(select.value=='Education'){
+    document.getElementById('education').style.display = "block";
+    document.getElementById('entertainment').style.display = "none";
+    document.getElementById('health').style.display = "none";
+    document.getElementById('household').style.display = "none";
+    document.getElementById('transport').style.display = "none";
+    document.getElementById('other').style.display = "none";
+
+  } else if(select.value == 'Entertainment'){
+    document.getElementById('entertainment').style.display = "block";
+    document.getElementById('education').style.display = "none";
+    document.getElementById('health').style.display = "none";
+    document.getElementById('household').style.display = "none";
+    document.getElementById('transport').style.display = "none";
+    document.getElementById('other').style.display = "none";
+
+  } else if(select.value=='Health'){
+    document.getElementById('health').style.display = "block";
+    document.getElementById('entertainment').style.display = "none";
+    document.getElementById('education').style.display = "none";
+    document.getElementById('household').style.display = "none";
+    document.getElementById('transport').style.display = "none";
+    document.getElementById('other').style.display = "none";
+
+  }else if(select.value == 'Household'){
+    document.getElementById('household').style.display = "block";
+    document.getElementById('health').style.display = "none";
+    document.getElementById('entertainment').style.display = "none";
+    document.getElementById('education').style.display = "none";
+    document.getElementById('transport').style.display = "none";
+    document.getElementById('other').style.display = "none";
+
+  }else if(select.value == 'Transport'){
+    document.getElementById('transport').style.display = "block";
+    document.getElementById('household').style.display = "none";
+    document.getElementById('health').style.display = "none";
+    document.getElementById('entertainment').style.display = "none";
+    document.getElementById('education').style.display = "none";
+    document.getElementById('other').style.display = "none";
+
+  }else if(select.value == 'Other'){
+    document.getElementById('other').style.display = "block";
+    document.getElementById('transport').style.display = "none";
+    document.getElementById('household').style.display = "none";
+    document.getElementById('health').style.display = "none";
+    document.getElementById('entertainment').style.display = "none";
+    document.getElementById('education').style.display = "none";
+
+  }else{
+    document.getElementById('other').style.display = "none";
+    document.getElementById('transport').style.display = "none";
+    document.getElementById('household').style.display = "none";
+    document.getElementById('health').style.display = "none";
+    document.getElementById('entertainment').style.display = "none";
+    document.getElementById('education').style.display = "none";
+   }
+  }
+</script>
