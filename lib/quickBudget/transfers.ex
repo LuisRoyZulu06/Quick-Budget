@@ -6,6 +6,7 @@ defmodule QuickBudget.Transfers do
   import Ecto.Query, warn: false
   alias QuickBudget.Repo
 
+  # ===================================== BANK ACCOUNT CONTEXT
   alias QuickBudget.Transfers.BankAccount
 
   @doc """
@@ -109,6 +110,7 @@ defmodule QuickBudget.Transfers do
     BankAccount.changeset(bank_account, attrs)
   end
 
+  # ====================================== TRANSACTIONS CONTEXT
   alias QuickBudget.Transfers.Transactions
 
   @doc """
@@ -205,6 +207,7 @@ defmodule QuickBudget.Transfers do
     Transactions.changeset(transactions, attrs)
   end
 
+  # ==================================== BANK CREDIT CONTEXT
   alias QuickBudget.Transfers.BankCredit
 
   @doc """
@@ -299,5 +302,102 @@ defmodule QuickBudget.Transfers do
   """
   def change_bank_credit(%BankCredit{} = bank_credit, attrs \\ %{}) do
     BankCredit.changeset(bank_credit, attrs)
+  end
+
+  # ================================== BUDGET CONTEXT
+  alias QuickBudget.Transfers.Budget
+
+  @doc """
+  Returns the list of tbl_budget_items.
+
+  ## Examples
+
+      iex> list_tbl_budget_items()
+      [%Budget{}, ...]
+
+  """
+  def list_tbl_budget_items do
+    Repo.all(Budget)
+  end
+
+  @doc """
+  Gets a single budget.
+
+  Raises `Ecto.NoResultsError` if the Budget does not exist.
+
+  ## Examples
+
+      iex> get_budget!(123)
+      %Budget{}
+
+      iex> get_budget!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_budget!(id), do: Repo.get!(Budget, id)
+
+  @doc """
+  Creates a budget.
+
+  ## Examples
+
+      iex> create_budget(%{field: value})
+      {:ok, %Budget{}}
+
+      iex> create_budget(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_budget(attrs \\ %{}) do
+    %Budget{}
+    |> Budget.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a budget.
+
+  ## Examples
+
+      iex> update_budget(budget, %{field: new_value})
+      {:ok, %Budget{}}
+
+      iex> update_budget(budget, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_budget(%Budget{} = budget, attrs) do
+    budget
+    |> Budget.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a budget.
+
+  ## Examples
+
+      iex> delete_budget(budget)
+      {:ok, %Budget{}}
+
+      iex> delete_budget(budget)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_budget(%Budget{} = budget) do
+    Repo.delete(budget)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking budget changes.
+
+  ## Examples
+
+      iex> change_budget(budget)
+      %Ecto.Changeset{data: %Budget{}}
+
+  """
+  def change_budget(%Budget{} = budget, attrs \\ %{}) do
+    Budget.changeset(budget, attrs)
   end
 end

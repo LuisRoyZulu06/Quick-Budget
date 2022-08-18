@@ -182,4 +182,144 @@ defmodule QuickBudget.TransfersTest do
       assert %Ecto.Changeset{} = Transfers.change_bank_credit(bank_credit)
     end
   end
+
+  describe "tbl_budget_items" do
+    alias QuickBudget.Transfers.Transactions
+
+    import QuickBudget.TransfersFixtures
+
+    @invalid_attrs %{acc_id: nil, activity_name: nil, amount_reserved: nil, budget_category: nil, details: nil, from: nil, status: nil, to: nil, user_id: nil}
+
+    test "list_tbl_budget_items/0 returns all tbl_budget_items" do
+      transactions = transactions_fixture()
+      assert Transfers.list_tbl_budget_items() == [transactions]
+    end
+
+    test "get_transactions!/1 returns the transactions with given id" do
+      transactions = transactions_fixture()
+      assert Transfers.get_transactions!(transactions.id) == transactions
+    end
+
+    test "create_transactions/1 with valid data creates a transactions" do
+      valid_attrs = %{acc_id: "some acc_id", activity_name: "some activity_name", amount_reserved: "some amount_reserved", budget_category: "some budget_category", details: "some details", from: "some from", status: "some status", to: "some to", user_id: "some user_id"}
+
+      assert {:ok, %Transactions{} = transactions} = Transfers.create_transactions(valid_attrs)
+      assert transactions.acc_id == "some acc_id"
+      assert transactions.activity_name == "some activity_name"
+      assert transactions.amount_reserved == "some amount_reserved"
+      assert transactions.budget_category == "some budget_category"
+      assert transactions.details == "some details"
+      assert transactions.from == "some from"
+      assert transactions.status == "some status"
+      assert transactions.to == "some to"
+      assert transactions.user_id == "some user_id"
+    end
+
+    test "create_transactions/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Transfers.create_transactions(@invalid_attrs)
+    end
+
+    test "update_transactions/2 with valid data updates the transactions" do
+      transactions = transactions_fixture()
+      update_attrs = %{acc_id: "some updated acc_id", activity_name: "some updated activity_name", amount_reserved: "some updated amount_reserved", budget_category: "some updated budget_category", details: "some updated details", from: "some updated from", status: "some updated status", to: "some updated to", user_id: "some updated user_id"}
+
+      assert {:ok, %Transactions{} = transactions} = Transfers.update_transactions(transactions, update_attrs)
+      assert transactions.acc_id == "some updated acc_id"
+      assert transactions.activity_name == "some updated activity_name"
+      assert transactions.amount_reserved == "some updated amount_reserved"
+      assert transactions.budget_category == "some updated budget_category"
+      assert transactions.details == "some updated details"
+      assert transactions.from == "some updated from"
+      assert transactions.status == "some updated status"
+      assert transactions.to == "some updated to"
+      assert transactions.user_id == "some updated user_id"
+    end
+
+    test "update_transactions/2 with invalid data returns error changeset" do
+      transactions = transactions_fixture()
+      assert {:error, %Ecto.Changeset{}} = Transfers.update_transactions(transactions, @invalid_attrs)
+      assert transactions == Transfers.get_transactions!(transactions.id)
+    end
+
+    test "delete_transactions/1 deletes the transactions" do
+      transactions = transactions_fixture()
+      assert {:ok, %Transactions{}} = Transfers.delete_transactions(transactions)
+      assert_raise Ecto.NoResultsError, fn -> Transfers.get_transactions!(transactions.id) end
+    end
+
+    test "change_transactions/1 returns a transactions changeset" do
+      transactions = transactions_fixture()
+      assert %Ecto.Changeset{} = Transfers.change_transactions(transactions)
+    end
+  end
+
+  describe "tbl_budget_items" do
+    alias QuickBudget.Transfers.Budget
+
+    import QuickBudget.TransfersFixtures
+
+    @invalid_attrs %{acc_id: nil, activity_name: nil, amount_reserved: nil, budget_category: nil, details: nil, from: nil, status: nil, to: nil, user_id: nil}
+
+    test "list_tbl_budget_items/0 returns all tbl_budget_items" do
+      budget = budget_fixture()
+      assert Transfers.list_tbl_budget_items() == [budget]
+    end
+
+    test "get_budget!/1 returns the budget with given id" do
+      budget = budget_fixture()
+      assert Transfers.get_budget!(budget.id) == budget
+    end
+
+    test "create_budget/1 with valid data creates a budget" do
+      valid_attrs = %{acc_id: "some acc_id", activity_name: "some activity_name", amount_reserved: "some amount_reserved", budget_category: "some budget_category", details: "some details", from: "some from", status: "some status", to: "some to", user_id: "some user_id"}
+
+      assert {:ok, %Budget{} = budget} = Transfers.create_budget(valid_attrs)
+      assert budget.acc_id == "some acc_id"
+      assert budget.activity_name == "some activity_name"
+      assert budget.amount_reserved == "some amount_reserved"
+      assert budget.budget_category == "some budget_category"
+      assert budget.details == "some details"
+      assert budget.from == "some from"
+      assert budget.status == "some status"
+      assert budget.to == "some to"
+      assert budget.user_id == "some user_id"
+    end
+
+    test "create_budget/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Transfers.create_budget(@invalid_attrs)
+    end
+
+    test "update_budget/2 with valid data updates the budget" do
+      budget = budget_fixture()
+      update_attrs = %{acc_id: "some updated acc_id", activity_name: "some updated activity_name", amount_reserved: "some updated amount_reserved", budget_category: "some updated budget_category", details: "some updated details", from: "some updated from", status: "some updated status", to: "some updated to", user_id: "some updated user_id"}
+
+      assert {:ok, %Budget{} = budget} = Transfers.update_budget(budget, update_attrs)
+      assert budget.acc_id == "some updated acc_id"
+      assert budget.activity_name == "some updated activity_name"
+      assert budget.amount_reserved == "some updated amount_reserved"
+      assert budget.budget_category == "some updated budget_category"
+      assert budget.details == "some updated details"
+      assert budget.from == "some updated from"
+      assert budget.status == "some updated status"
+      assert budget.to == "some updated to"
+      assert budget.user_id == "some updated user_id"
+    end
+
+    test "update_budget/2 with invalid data returns error changeset" do
+      budget = budget_fixture()
+      assert {:error, %Ecto.Changeset{}} = Transfers.update_budget(budget, @invalid_attrs)
+      assert budget == Transfers.get_budget!(budget.id)
+    end
+
+    test "delete_budget/1 deletes the budget" do
+      budget = budget_fixture()
+      assert {:ok, %Budget{}} = Transfers.delete_budget(budget)
+      assert_raise Ecto.NoResultsError, fn -> Transfers.get_budget!(budget.id) end
+    end
+
+    test "change_budget/1 returns a budget changeset" do
+      budget = budget_fixture()
+      assert %Ecto.Changeset{} = Transfers.change_budget(budget)
+    end
+  end
 end

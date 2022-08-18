@@ -54,4 +54,48 @@ defmodule QuickBudget.TransfersFixtures do
 
     bank_credit
   end
+
+  @doc """
+  Generate a transactions.
+  """
+  def transactions_fixture(attrs \\ %{}) do
+    {:ok, transactions} =
+      attrs
+      |> Enum.into(%{
+        acc_id: "some acc_id",
+        activity_name: "some activity_name",
+        amount_reserved: "some amount_reserved",
+        budget_category: "some budget_category",
+        details: "some details",
+        from: "some from",
+        status: "some status",
+        to: "some to",
+        user_id: "some user_id"
+      })
+      |> QuickBudget.Transfers.create_transactions()
+
+    transactions
+  end
+
+  @doc """
+  Generate a budget.
+  """
+  def budget_fixture(attrs \\ %{}) do
+    {:ok, budget} =
+      attrs
+      |> Enum.into(%{
+        acc_id: "some acc_id",
+        activity_name: "some activity_name",
+        amount_reserved: "some amount_reserved",
+        budget_category: "some budget_category",
+        details: "some details",
+        from: "some from",
+        status: "some status",
+        to: "some to",
+        user_id: "some user_id"
+      })
+      |> QuickBudget.Transfers.create_budget()
+
+    budget
+  end
 end

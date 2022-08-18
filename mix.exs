@@ -57,7 +57,8 @@ defmodule QuickBudget.MixProject do
       {:pipe_to, "~> 0.2"},
       {:bamboo, "~> 1.3"},
       {:bamboo_smtp, "~> 2.1.0"},
-      {:timex, "~> 3.7"}
+      {:timex, "~> 3.7"},
+      {:atomic_map, "~> 0.8"}
     ]
   end
 

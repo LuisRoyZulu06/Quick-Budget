@@ -13,7 +13,7 @@
             <span class="help-block">
               <div class="form-group">
                 <label>Amount</label>
-                <input class="form-control" placeholder="ZMW" type="text" name="amount">
+                <input class="form-control" placeholder="ZMW" type="number" name="amount">
                 <input type="hidden" id="csrf" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()}>
                 <input type="hidden" id="acc_id" name="acc_id" value={@acc_details.id}>
               </div>

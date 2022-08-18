@@ -1,14 +1,11 @@
-<style>
-  #education, #entertainment, #health, #household, #transport, #other{
-    display: none;
-  }
-</style>
-
-<form action="#" method="POST">
+<form action={Routes.transfers_path(@conn, :budget_items)} method="POST">
   <div class="d-flex flex-column">
     <div class="form-group">
       <p class="mg-b-10">Budget Category</p>
-      <select class="form-control select2" onchange="showDiv(this)">
+      <input type="hidden" id="acc_id" name="acc_id" value={@acc_details.id}>
+      <input type="hidden" id="user_id" name="user_id" value={@acc_details.user_id}>
+      <input type="hidden" id="csrf" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()}>
+      <select class="form-control" name="budget_category">
         <option label="Select Item to Budget for">
           Select Item to Budget for
         </option>
@@ -39,107 +36,9 @@
       </select>
     </div>
 
-    <!-- Education Div -->
-    <div id="education">
       <div class="form-group">
-        <p class="mg-b-10">Tuition Fees: Period (From - To)</p>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="input-group">
-              <div class="input-group-text">
-                  From:
-              </div>
-              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="input-group">
-              <div class="input-group-text">
-                  To:
-              </div>
-              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <p class="mg-b-10">Amount to be paid</p>
-          <input class="form-control" placeholder="K000.00" type="number">
-          <input class="form-control" value="Tuition Fees" type="hidden" name="activity">
-        </div>
-
-        <div class="form-group">
-          <p class="mg-b-10">Note</p>
-          <textarea class="form-control" placeholder="Typing..." row="5"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <!-- Entertainment Div -->
-    <div id="entertainment">
-      <div class="form-group">
-        <p class="mg-b-10">Activity Name</p>
-        <input class="form-control" placeholder="Enter activity name" type="text" name="activity">
-      </div>
-
-      <div class="form-group">
-        <p class="mg-b-10">Date start & Date end</p>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="input-group">
-              <div class="input-group-text">
-                  From:
-              </div>
-              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="input-group">
-              <div class="input-group-text">
-                  To:
-              </div>
-              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <p class="mg-b-10">Amount to reserve</p>
-        <input class="form-control" placeholder="K000.00" type="number" name="amount">
-      </div>
-
-      <div class="form-group">
-        <p class="mg-b-10">Note</p>
-        <textarea class="form-control" placeholder="Typing..." row="5"></textarea>
-      </div>
-    </div>
-
-    <!-- Health Div -->
-    <div id="health">
-      <div class="form-group">
-        <p class="mg-b-10">Activity Name</p>
-        <input class="form-control" placeholder="Activity Name" type="text">
-      </div>
-
-      <div class="form-group">
-        <p class="mg-b-10">Amount to reserve</p>
-        <input class="form-control" placeholder="K000.00" type="number" name="amount">
-      </div>
-
-      <div class="form-group">
-        <p class="mg-b-10">Note</p>
-        <textarea class="form-control" placeholder="Typing..." row="5"></textarea>
-      </div>
-    </div>
-
-    <!-- Household Div -->
-    <div id="household">
-      <div class="form-group">
-        <p class="mg-b-10">Activity Name</p>
-        <input class="form-control" placeholder="Loan | Grocery | Rentals | Utility Bills" type="text">
+        <p class="mg-b-10">Item Name</p>
+        <input class="form-control" placeholder="Item Name" type="text" name="activity_name">
       </div>
 
       <div class="form-group">
@@ -150,7 +49,7 @@
               <div class="input-group-text">
                   From:
               </div>
-              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
+              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date" name="from">
             </div>
           </div>
 
@@ -159,7 +58,7 @@
               <div class="input-group-text">
                   To:
               </div>
-              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
+              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date" name="to">
             </div>
           </div>
         </div>
@@ -167,80 +66,21 @@
 
       <div class="form-group">
         <p class="mg-b-10">Amount to reserve</p>
-        <input class="form-control" placeholder="K000.00" type="number" name="amount">
+        <input class="form-control" placeholder="K000.00" type="number" name="amount_reserved">
       </div>
 
       <div class="form-group">
         <p class="mg-b-10">Note</p>
-        <textarea class="form-control" placeholder="Typing..." row="5"></textarea>
-      </div>
-    </div>
-
-    <!-- Transport Div -->
-    <div id="transport">
-      <div class="form-group">
-        <p class="mg-b-10">Activity Name</p>
-        <input class="form-control" placeholder="Car Servicing | Gas | Toll Parking" type="text">
+        <textarea class="form-control" placeholder="Typing..." row="5" name="details"></textarea>
       </div>
 
-      <div class="form-group">
-        <p class="mg-b-10">Period (From - To)</p>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="input-group">
-              <div class="input-group-text">
-                  From:
-              </div>
-              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
-            </div>
-          </div>
 
-          <div class="col-md-6">
-            <div class="input-group">
-              <div class="input-group-text">
-                  To:
-              </div>
-              <input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="date">
-            </div>
-          </div>
-        </div>
+      <div class="form-group pull-left">
+        <button class="btn ripple btn-main-primary process-btn" type="submit">
+          <i class="si si-plus"></i>
+          Submit Item
+        </button>
       </div>
-
-      <div class="form-group">
-        <p class="mg-b-10">Amount to reserve</p>
-        <input class="form-control" placeholder="K000.00" type="number" name="amount">
-      </div>
-
-      <div class="form-group">
-        <p class="mg-b-10">Note</p>
-        <textarea class="form-control" placeholder="Typing..." row="5"></textarea>
-      </div>
-    </div>
-
-    <!-- Other Div -->
-    <div id="other">
-      <div class="form-group">
-        <p class="mg-b-10">Activity Name</p>
-        <input class="form-control" placeholder="Activity Name" type="text">
-      </div>
-      
-      <div class="form-group">
-        <p class="mg-b-10">Amount to reserve</p>
-        <input class="form-control" placeholder="K000.00" type="number" name="amount">
-      </div>
-
-      <div class="form-group">
-        <p class="mg-b-10">Note</p>
-        <textarea class="form-control" placeholder="Typing..." row="5"></textarea>
-      </div>
-    </div>
-
-    <div class="form-group pull-left">
-      <button class="btn ripple btn-main-primary process-btn">
-        <i class="si si-plus"></i>
-        Submit Item
-      </button>
-    </div>
   </div>
 </form>
 
