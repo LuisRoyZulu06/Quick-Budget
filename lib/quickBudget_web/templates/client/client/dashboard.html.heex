@@ -3,9 +3,7 @@
 
     <!--Row-->
     <div class="row row-sm" style="margin-bottom: 5%;">
-      <div class="col-md-1"></div>
-
-      <div class="col-md-10">
+      <div class="col-md-12">
         <!-- Flash -->
         <div class="mt-5">
           <%= if get_flash(@conn, :info) do %>
@@ -27,58 +25,139 @@
           <% end %>
         </div>
 
-        <!-- Page Header -->
-        <div class="page-header">
-          <div>
-            <h3 style="font-weight: bold; color: #ff6600;">
-              Quick Budget
-            </h3>
-          </div>
-        </div>
-
-        <!-- Dashboard Banner-->
+        <!-- FIRST ROW-->
         <div class="row row-sm  mt-lg-4">
-          <div class="col-sm-12 col-lg-12 col-xl-12">
-            <div class="card bg-info custom-card card-box" style="background-color: #ff6600 !important; ">
-              <div class="card-body p-4">
-                <div class="row align-items-center">
-                  <div class="offset-lg-4 offset-sm-6 col-lg-8 col-sm-6 col-12 img-bg ">
-                    <h4 class="d-flex  mb-3" style="margin-left: 30%;">
-                      <span class="font-weight-bold text-white">
-                        Hello <%= "#{(@conn.assigns.user.username)}"%>, lets budget!
-                      </span>
-                    </h4>
-                    <p class="tx-white-7 mb-5" style="margin-left: 30%;">
-                      <!---- -------------------- MESSAGE HERE ------------------------------>
-                      Need help to manage your financies?<br>
-                      Welcome to Quick Budget | Save for your growth
-                    </p>
-                  </div>
-                  <img src={Routes.static_path(@conn, "/images/dashboard/1.png")} alt="user">
+          <!-- PROFILE CARD -->
+          <div class="col-sm-4 col-lg-4 col-xl-4">
+            <div class="card custom-card">
+              <div class="card-body user-card text-center" style="margin-top: 1.3em;">
+                <div class="main-img-user avatar-lg online text-center">
+                  <img src={Routes.static_path(@conn, "/images/avatar/3.png")} class="rounded-circle" alt="Profile Picture">
                 </div>
+                <div class="mt-2">
+                  <h5 class="mb-1">
+                    <%= "#{(@conn.assigns.user.username)}"%>
+                  </h5>
+                  <p class="mb-1 tx-inverse">
+                    <%= "#{(@conn.assigns.user.email)}"%>
+                  </p>
+                  <span class="text-muted" style="margin-bottom: 5em;">
+                    <i class="far fa-check-circle text-success me-1"></i>
+                    Lets Budget!
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BUDGET LIST -->
+          <div class="col-sm-8 col-lg-8 col-xl-8">
+            <div class="card custom-card card-draggable ui-sortable-handle">
+              <div class="card-header tx-medium" style="background: #5353c6;">
+                <a href="#">
+                  <label class="main-content-label tx-13 font-weight-bold mb-1 text-white">
+                    Budget List
+                  </label>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <table class="table text-nowrap text-md-nowrap table-hover mg-b-0">
+                      <tbody>
+                        <tr>
+                          <td>Joan Powell</td>
+                        </tr>
+                        <tr>
+                          <td>Samantha May</td>
+                        </tr>
+                        <tr>
+                          <td>Samantha May</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="col-md-6">
+                    <table class="table text-nowrap text-md-nowrap table-hover mg-b-0">
+                      <tbody>
+                        <tr>
+                          <td>Joan Powell</td>
+                        </tr>
+                        <tr>
+                          <td>Samantha May</td>
+                        </tr>
+                        <tr>
+                          <td>Samantha May</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>        
               </div>
             </div>
           </div>
         </div>
 
-        <!--Credit Cards-->
+        <!-- SECOND ROW-->
         <div class="row row-sm">
           <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
             <a href="#" data-bs-target="#cash-deposit" data-bs-toggle="modal">
               <div class="card custom-card">
                 <div class="card-body">
                   <div class="card-item">
-                    <div class="card-item-icon card-icon">
-                      <img src={Routes.static_path(@conn, "/images/logos/3.png")} alt="bank logo">
-                    </div>
                     <div class="card-item-title  mb-2">
-                      <label class="main-content-label tx-13 font-weight-bold mb-1">Available Balance</label>
-                      <span class="d-block tx-12 mb-0 text-muted"><%= @acc_details.acc_no %></span>
+                      <label class="main-content-label tx-13 font-weight-bold mb-1">
+                        UPCOMING PAYMENTS                      
+                      </label>
                     </div>
+
                     <div class="card-item-body">
                       <div class="card-item-stat">
-                        <h4 class="font-weight-bold">ZMW18,500</h4>
-                        <small>Click to deposit </small>
+                        <!-- UPCOMING PAYMENTS -->
+                        <div id="basicSlider">
+                          <div class="MS-content">
+                            <div class="item">
+                              <a href="#" target="_blank"> 
+                                <img src={Routes.static_path(@conn, "/images/dummies/1.jpg")} alt="service due">
+                              </a>
+                            </div>
+
+                            <div class="item">
+                              <a href="#" target="_blank"> 
+                                <img src={Routes.static_path(@conn, "/images/brands/1.png")} alt="service due">
+                                <figcaption>
+                                  <small>
+                                    Due 14 days
+                                  </small>
+                                </figcaption>
+                              </a>
+                            </div>
+
+                            <div class="item">
+                              <a href="#" target="_blank"> 
+                                <img src={Routes.static_path(@conn, "/images/brands/2.png")} alt="service due">
+                                <figcaption>
+                                  <small>
+                                    Due 14 days
+                                  </small>
+                                </figcaption>
+                              </a>
+                            </div>
+
+                            <div class="item">
+                              <a href="#" target="_blank"> 
+                                <img src={Routes.static_path(@conn, "/images/dummies/4.jpg")} alt="service due">
+                              </a>
+                            </div>
+
+                            <div class="item">
+                              <a href="#" target="_blank"> 
+                                <img src={Routes.static_path(@conn, "/images/dummies/5.jpg")} alt="service due">
+                              </a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -96,21 +175,15 @@
                       <img src={Routes.static_path(@conn, "/images/logos/3.png")} alt="bank logo">
                     </div> -->
                     <div class="card-item-title  mb-2">
-                      <label class="main-content-label tx-13 font-weight-bold mb-1">To-Do List</label>
-                      <span class="d-block tx-12 mb-0 text-muted">
-                        Items pending your attention
-                      </span>
+                      <label class="main-content-label tx-13 font-weight-bold mb-1">
+                        CREDIT SCORE
+                      </label>
                     </div>
                     <div class="card-item-body">
                       <div class="card-item-stat">
-                        <h4 class="font-weight-bold">
-                          8
-                          <small>Items pending your financial attention</small>
+                        <h4 class="font-weight-bold" style="margin-top: 5.2em;">
+                          Credit Score Comming Soon
                          </h4>
-                        <small>
-                          Click to view
-                          <!-- Available Balance -->
-                        </small>
                       </div>
                     </div>
                   </div>
@@ -120,9 +193,7 @@
           </div>
         </div>
       </div>
-
-      <div class="col-md-1"></div>
-    </div><!-- Row end -->
+    </div>
 
   </div>
 </div>

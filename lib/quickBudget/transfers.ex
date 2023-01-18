@@ -334,6 +334,112 @@ defmodule QuickBudget.Transfers do
       ** (Ecto.NoResultsError)
 
   """
+  def get_budget_items(search_params, page, size) do
+    Budget
+    # |> join(:left, [u], r in "user_role", on: u.role_id == r.id)
+    |> where([u], u.status != "ACCOMPLISHED")
+    |> handle_budget_filter(search_params)
+    |> order_by(desc: :inserted_at)
+    |> compose_budget_select()
+    |> Repo.all()
+
+    # |> Repo.paginate(page: page, page_size: size)
+  end
+
+  def get_budget_items() do
+    Budget
+    # |> join(:left, [u], r in "user_role", on: u.role_id == r.id)
+    |> where([u], u.status != "ACCOMPLISHED")
+    |> order_by(desc: :inserted_at)
+    |> compose_budget_select()
+    |> Repo.all()
+
+    # |> Repo.paginate(page: page, page_size: size)
+  end
+
+  defp handle_budget_filter(query, params) do
+    Enum.reduce(params, query, fn
+      {"isearch", value}, query when byte_size(value) > 0 ->
+        budget_isearch_filter(query, sanitize_term(value))
+
+      # {"budget_category", value}, query when byte_size(value) > 0 ->
+      #   where(
+      #     query,
+      #     [a],
+      #     fragment("lower(?) LIKE lower(?)", a.budget_category, ^sanitize_term(value))
+      #   )
+      #
+      # {"activity_name", value}, query when byte_size(value) > 0 ->
+      #   where(
+      #     query,
+      #     [a],
+      #     fragment("lower(?) LIKE lower(?)", a.activity_name, ^sanitize_term(value))
+      #   )
+      #
+      # {"amount_reserved", value}, query when byte_size(value) > 0 ->
+      #   where(
+      #     query,
+      #     [a],
+      #     fragment("lower(?) LIKE lower(?)", a.amount_reserved, ^sanitize_term(value))
+      #   )
+      #
+      # {"details", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("lower(?) LIKE lower(?)", a.details, ^sanitize_term(value)))
+      #
+      # {"status", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("lower(?) LIKE lower(?)", a.status, ^sanitize_term(value)))
+      #
+      # {"user_id", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("lower(?) LIKE lower(?)", a.user_id, ^sanitize_term(value)))
+      #
+      # {"acc_id", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("lower(?) LIKE lower(?)", a.acc_id, ^sanitize_term(value)))
+      #
+      # {"from", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("CAST(? AS DATE) >= ?", a.from, ^value))
+      #
+      # {"to", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("CAST(? AS DATE) <= ?", a.to, ^value))
+
+      {_, _}, query ->
+        # Not a where parameter
+        query
+    end)
+  end
+
+  defp budget_isearch_filter(query, search_term) do
+    where(
+      query,
+      [a],
+      fragment("lower(?) LIKE lower(?)", a.budget_category, ^search_term) or
+        fragment("lower(?) LIKE lower(?)", a.activity_name, ^search_term) or
+        fragment("lower(?) LIKE lower(?)", a.amount_reserved, ^search_term)
+    )
+  end
+
+  defp sanitize_term(term), do: "%#{String.replace(term, "%", "\\%")}%"
+
+  defp compose_budget_select(query) do
+    query
+    |> select(
+      [t],
+      map(t, [
+        :id,
+        :budget_category,
+        :activity_name,
+        :amount_reserved,
+        :details,
+        :user_id,
+        :acc_id,
+        :status,
+        :from,
+        :to,
+        :inserted_at,
+        :updated_at
+      ])
+    )
+  end
+
   def get_budget!(id), do: Repo.get!(Budget, id)
 
   @doc """

@@ -18,4 +18,8 @@ defmodule QuickBudgetWeb.Client.ClientController do
     acc_details = Transfers.get_acc_details(user.id)
     render(conn, "dashboard.html", acc_details: acc_details)
   end
+
+  def budget_items(conn, _params) do
+    render(conn, "budget_items.html")
+  end
 end

@@ -75,6 +75,7 @@ defmodule QuickBudgetWeb.Router do
     get("/dashboard", ClientController, :dashboard)
     post("/deposit/cash", TransfersController, :depsoit)
     post("/budget/items", TransfersController, :budget_items)
+    post("/pull/budget/items", TransfersController, :pull_budget_items)
   end
 
   # --------------- BACKOFFICE

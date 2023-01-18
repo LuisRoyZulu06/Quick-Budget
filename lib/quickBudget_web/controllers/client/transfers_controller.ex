@@ -104,6 +104,27 @@ defmodule QuickBudgetWeb.Client.TransfersController do
     #   |> redirect(to: Routes.bank_path(conn, :index))
   end
 
+  def pull_budget_items(conn, search_params) do
+    IO.inspect(search_params, label: "==================== search_params")
+    # {draw, start, length, search_params} = QuickBudget.Pages.search_options(search_params)
+
+    # json(
+    #   conn,
+    #   QuickBudget.Pages.display(
+    #     draw,
+    #     Transfers.get_budget_items(
+    #       search_params,
+    #       start,
+    #       length
+    #     )
+    #   )
+    # )
+
+    data = Transfers.get_budget_items()
+    IO.inspect(data, label: "================== data")
+    json(conn, %{data: data})
+  end
+
   def to_atomic_map(string_map) do
     AtomicMap.convert(string_map, %{safe: false})
   end
