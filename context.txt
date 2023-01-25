@@ -3,6 +3,10 @@ mix phx.gen.context Accounts UserAccounts tbl_users first_name last_name usernam
 mix phx.gen.context Logs UserLogs tbl_user_logs activity user_id
 mix phx.gen.context Notifications Email tbl_email_logs subject sender_email sender_name mail_body recipient_email status attempts
 
+============== BUDGETING BUDGETING =========
+mix phx.gen.context Budget BudgetAmount tbl_budget_amount user_id amount from to status
+mix phx.gen.context Budget BudgetItems tbl_budget_items budget_category budget_item amount_reserved details status budget_id
+
 ============== TRANSFERS MODULE =================
 mix phx.gen.context Transfers BankAccount tbl_txns acc_name acc_no amount narration txn_reference txn_type
 mix phx.gen.context Transfers BankCredit tbl_bank_credit acc_no acc_id amount

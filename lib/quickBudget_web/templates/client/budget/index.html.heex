@@ -1,0 +1,222 @@
+<div class="page-header">
+    <div>
+        <div class="justify-content-center">
+            <button type="button" class="btn btn-sm btn-dark text-white" data-bs-target="#makeBudget" data-bs-toggle="modal">
+                <i class="fe fe-plus me-2"></i> Enter Budget
+            </button>
+
+            <button type="button" class="btn btn-sm btn-proceed text-white" data-bs-target="#addBudgetItem" data-bs-toggle="modal">
+                <i class="fe fe-plus me-2"></i> Add Budget Item
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- FLASH NOTICE -->
+<div class="row">
+    <div class="col-md-12 col-lg-offset-2">
+        <div class="form-group">
+            <%= if get_flash(@conn, :info) do %>
+                <div class="alert alert-success alert-styled-left" role="alert">
+                    <span class="alert-inner--icon"><i class="fe fe-thumbs-up"></i></span>
+                    <span class="alert-inner--text">
+                    <strong><%= get_flash(@conn, :info) %></strong>
+                    </span>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% end %>
+
+            <%= if get_flash(@conn, :error) do %>
+                <div class="alert alert-danger mg-b-0 alert-styled-left" role="alert">
+                    <span class="alert-inner--icon"><i class="fe fe-slash"></i></span>
+                    <span class="alert-inner--text">
+                    <strong><%= get_flash(@conn, :error) %></strong>
+                    </span>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="card overflow-hidden card-blog-overlay2 custom-card">
+    <div class="card-body  text-white z-index2">
+        <div class="row">
+            <div class="col-md-4">
+                <strong>Total Budget:</strong> 
+                <br> K0.00 
+            </div>
+            <div class="col-md-4">
+                <strong>Expenses:</strong> 
+                <br> K0.00
+            </div>
+            <div class="col-md-4">
+                <strong>Balance:</strong> 
+                <br>K0.00 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Budget List -->
+<div class="row row-sm">
+    <div class="col-lg-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div>
+                    <h6 class="main-content-label mb-1">
+                        Budget List
+                    </h6>
+                    <p class="text-muted card-sub-title">
+                        Total Budget List Items
+                    </p>
+                </div>
+                <div class="table-responsive">
+                    <table id="example3" class="table table-striped table-bordered text-nowrap" >
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <%= for budget_item <-@budget_items do %>>
+                                <tr>
+                                    <td><% budget_item.budget_item %></td>
+                                    <td><% budget_item.amount_reserved %></td>
+                                    <td><% budget_item.status %></td>
+                                    <td><% budget_item.inserted_at %></td>
+                                    <td>61</td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal-Add-Budget-Item -->
+<div class="modal" id="addBudgetItem">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content tx-size-sm">
+            <div class="modal-body pd-y-20 pd-x-20">
+                <form>
+                    <div class="tx-center">
+                        <h6 class="main-content-label mb-1">Lets Budget!</h6>
+                        <p class="text-muted card-sub-title">
+                            Add desired budget items to list
+                        </p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="form-group">
+                            <p class="mg-b-10">Expenses List</p>
+                            <select class="form-control select2">
+                                <option label="Choose one">
+                                </option>
+                                <option value="Safari">
+                                    Academics
+                                </option>
+                                <option value="Firefox">
+                                    Movie
+                                </option>
+                                <option value="Chrome">
+                                    Groceries
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Enter Amount" type="number">
+                        </div>
+                        <div class="form-group">
+                            <label class="ckbox">
+                                <input type="checkbox"><span class="tx-13">I agree terms and conditions</span>
+                            </label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-block ripple btn-main-primary">
+                                    <i class="si si-settings"></i> 
+                                    Set
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-block ripple btn-main-primary" data-bs-dismiss="modal">
+                                    <i class="si si-ban"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal-Set-Budget -->
+<div class="modal" id="makeBudget">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content tx-size-sm">
+            <div class="modal-body pd-y-20 pd-x-20">
+                <form action={Routes.budget_path(@conn, :set_budget_amount)} method="POST">
+                    <div class="tx-center">
+                        <h6 class="main-content-label mb-1">Lets Budget!</h6>
+                        <p class="text-muted card-sub-title">
+                            Set Budget Limit
+                        </p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="form-group">
+                            <p class="mg-b-10">Budget Amount</p>
+                            <input name="amount" class="form-control" placeholder="Enter Amount" type="number">
+                            <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()}>
+                            <input type="hidden" name="user_id" value={(@conn.assigns.user.id)}>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="mg-b-10">From</p>
+                                     <input name="from" class="form-control" type="date">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <p class="mg-b-10">To</p>
+                                     <input name="to" class="form-control" type="date">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-block ripple btn-main-primary">
+                                    <i class="si si-settings"></i> 
+                                    Set Budget Amount
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-block ripple btn-main-primary" data-bs-dismiss="modal">
+                                    <i class="si si-ban"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

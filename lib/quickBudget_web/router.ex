@@ -7,6 +7,7 @@ defmodule QuickBudgetWeb.Router do
     plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug(QuickBudgetWeb.Plugs.SetClient)
     plug(QuickBudgetWeb.Plugs.SetUser)
   end
 
@@ -17,7 +18,8 @@ defmodule QuickBudgetWeb.Router do
     plug :put_layout, {QuickBudgetWeb.LayoutView, :client}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug(QuickBudgetWeb.Plugs.SetUser)
+    plug(QuickBudgetWeb.Plugs.SetClient)
+    plug(QuickBudgetWeb.Plugs.SessionTimeout, timeout_after_seconds: 9000_000_000)
   end
 
   pipeline :admin do
@@ -73,6 +75,12 @@ defmodule QuickBudgetWeb.Router do
     pipe_through :client
 
     get("/dashboard", ClientController, :dashboard)
+    get("/my/profile", ClientController, :user_profile)
+    get("/about/us", ClientController, :about_us)
+
+    get("/budget/list", BudgetController, :index)
+    post("/budget/amount", BudgetController, :set_budget_amount)
+
     post("/deposit/cash", TransfersController, :depsoit)
     post("/budget/items", TransfersController, :budget_items)
     post("/pull/budget/items", TransfersController, :pull_budget_items)

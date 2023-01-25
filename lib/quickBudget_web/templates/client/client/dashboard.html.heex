@@ -29,32 +29,34 @@
         <div class="row row-sm  mt-lg-4">
           <!-- PROFILE CARD -->
           <div class="col-sm-4 col-lg-4 col-xl-4">
-            <div class="card custom-card">
-              <div class="card-body user-card text-center" style="margin-top: 1.3em;">
-                <div class="main-img-user avatar-lg online text-center">
-                  <img src={Routes.static_path(@conn, "/images/avatar/3.png")} class="rounded-circle" alt="Profile Picture">
-                </div>
-                <div class="mt-2">
-                  <h5 class="mb-1">
-                    <%= "#{(@conn.assigns.user.username)}"%>
-                  </h5>
-                  <p class="mb-1 tx-inverse">
-                    <%= "#{(@conn.assigns.user.email)}"%>
-                  </p>
-                  <span class="text-muted" style="margin-bottom: 5em;">
-                    <i class="far fa-check-circle text-success me-1"></i>
-                    Lets Budget!
-                  </span>
+            <a href={(Routes.client_path(@conn, :user_profile))}>
+              <div class="card custom-card">
+                <div class="card-body user-card text-center" style="margin-top: 1.3em;">
+                  <div class="main-img-user avatar-lg online text-center">
+                    <img src={Routes.static_path(@conn, "/images/avatar/6.png")} class="rounded-circle" alt="Profile Picture">
+                  </div>
+                  <div class="mt-2">
+                    <h5 class="mb-1">
+                      <%= "#{(@conn.assigns.user.username)}"%>
+                    </h5>
+                    <p class="mb-1 tx-inverse">
+                      <%= "#{(@conn.assigns.user.email)}"%>
+                    </p>
+                    <span class="text-muted" style="margin-bottom: 5em;">
+                      <i class="far fa-check-circle text-success me-1"></i>
+                      Lets Budget!
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <!-- BUDGET LIST -->
           <div class="col-sm-8 col-lg-8 col-xl-8">
             <div class="card custom-card card-draggable ui-sortable-handle">
               <div class="card-header tx-medium" style="background: #5353c6;">
-                <a href="#">
+                <a href={(Routes.budget_path(@conn, :index))}>
                   <label class="main-content-label tx-13 font-weight-bold mb-1 text-white">
                     Budget List
                   </label>
@@ -198,5 +200,3 @@
   </div>
 </div>
 
-<!-- Modals -->
-<%=  QuickBudgetWeb.Client.TransfersView.render "md_deposits.html", assigns %>

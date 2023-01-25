@@ -1,0 +1,77 @@
+<div class="row square mt-5">
+    <div class="col-lg-12 col-md-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="panel profile-cover">
+                    <div class="profile-cover__img">
+                        <img src={Routes.static_path(@conn, "/images/avatar/6.png")}  class="mobile-logo-dark"  alt="user avatar">
+                        <h3 class="h3">
+                            <%= "#{(@conn.assigns.user.first_name)}"%> <%= "#{(@conn.assigns.user.last_name)}"%>
+                        </h3>
+                    </div>
+                    <div class="profile-cover__action bg-img" style="background-color: #de7d21;"></div>
+                    <div class="profile-cover__info">
+                        <ul class="nav">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="p-4">
+                    <div class="d-sm-flex">
+                        <div class="mg-sm-r-20 mg-b-10">
+                            <div class="main-profile-contact-list">
+                                <div class="media">
+                                    <div class="media-icon bg-info-transparent text-info"> 
+                                        <i class="icon ion-pull-request"></i> 
+                                    </div>
+                                    <div class="media-body"> <span>Username</span>
+                                        <div> <%= "#{(@conn.assigns.user.username)}"%> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mg-sm-r-20 mg-b-10">
+                            <div class="main-profile-contact-list">
+                                <div class="media">
+                                    <div class="media-icon bg-primary-transparent text-primary"> <i class="icon ion-md-phone-portrait"></i> </div>
+                                    <div class="media-body"> <span>Mobile</span>
+                                        <div> <%= "#{(@conn.assigns.user.phone)}"%> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="main-profile-contact-list">
+                                <div class="media">
+                                    <div class="media-icon bg-success-transparent text-success"> 
+                                        <i class="fe fe-mail"></i> 
+                                    </div>
+                                    <div class="media-body"> <span>Email</span>
+                                        <div> <%= "#{(@conn.assigns.user.email)}"%> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                <div class="profile-tab tab-menu-heading">
+                    <nav class="nav main-nav-line p-3 tabs-menu profile-nav-line bg-gray-100">
+                        <a class="nav-link  active" data-bs-toggle="tab" href="#about">About</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#edit">Edit Profile</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#timeline">Timeline</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#gallery">Gallery</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#friends">Friends</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#settings">Account Settings</a>
+                    </nav>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+</div>

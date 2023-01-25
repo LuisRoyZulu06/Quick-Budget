@@ -2,7 +2,7 @@ defmodule QuickBudget.Transfers.Budget do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "tbl_budget_items" do
+  schema "tbl_budget_itemsssss" do
     field :activity_name, :string
     field :amount_reserved, :string
     field :budget_category, :string
