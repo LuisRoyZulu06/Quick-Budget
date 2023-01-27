@@ -7,6 +7,8 @@ defmodule QuickBudget.Repo.Migrations.CreateTblBudgetAmount do
       add :from, :string
       add :to, :string
       add :status, :string
+      add :budget_ref, :string
+      add :narration, :string
       add :user_id, references(:tbl_users, column: :id, on_delete: :nothing)
 
       timestamps()

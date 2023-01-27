@@ -198,4 +198,17 @@ defmodule QuickBudget.Budget do
   def change_budget_items(%BudgetItems{} = budget_items, attrs \\ %{}) do
     BudgetItems.changeset(budget_items, attrs)
   end
+
+  ## ========== CUSTOM
+
+
+  def total_budget(budget_ref) do
+    BudgetAmount
+    |> join(:left, [c], t in "tbl_users", on: c.id == t.user_id)
+    |> where([c, t], t.budget_ref == ^budget_ref)
+    |> select([c, t], %{
+      amount: t.amount
+    })
+    |> Repo.one()
+  end
 end
